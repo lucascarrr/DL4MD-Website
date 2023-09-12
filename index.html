@@ -1,81 +1,55 @@
+
 <!DOCTYPE html>
 <html>
 
 <head>
-  <title> Deep Learning for Intrusion Detection </title>
+  <title>Deep Learning for Intrusion Detection</title>
   <meta charset="UTF-8" />
   <meta name="description" content="This is the website for Lucas Carr and Christopher Lamprecht's honours projects" />
   <meta http-equiv="content-type" content="text/html;charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="author" content="Lucas Carr & Christopher Lamprecht" />
   <link rel="stylesheet" type="text/css" href="styles.css" />
+  <script src="script.js"></script>
 </head>
 
 <body>
   <h1 class="Title">Deep Learning for Intrusion Detection</h1>
+
+  <div class="header">
+      <!-- <div class="project-description"> An evaluation of deep learning approaches to intrusion detection on encrypted network traffic -->
+      <!-- </div> -->
+
+      <div class="intro"> DL4ID is a UCT Honours Project, created by Lucas Carr and Christopher Lamprecht </div>
+      <div class="intro"> Supervised by Dr Josiah Chavula </div>
+      
+  </div>
+
   <div class="container-top">
-    <p>Last updated 14 September, 2023</p>
+    <div class="tab-container">
+      <div class="tab active" data-tab="tab1">Botnet Detection</div>
+      <div class="tab" data-tab="tab2">Ransomware</div>
+      <div class="tab" data-tab="tab3">Deliverables</div>
+    </div>
+
     <div class="centered-hr"></div>
   </div>
 
   <div class="container-mid">
-    <div class="container-mid-left">
-      <h1 class="abstract">Abstract</h1>
-      <div class="centered-hr"></div>
-    
+    <div id="tab1-content" class="tab-content" style="display: block;">
+        <p class="Abstract"> Abstract </p>
+        <p>Detection of malicious traffic on a network is critical to ensuring thesafety and security of internet systems. Classical approaches to thistask increasingly struggle with modern networking procedures, likeencryption. Deep learning (DL) offers an alternative approach to trafficclassification problems.We address two major problem classes: (1) botnetdetection and (2) botnet family classification. For each problem, weexplore five implementations of DL architectures: a multi-layer perceptron(MLP), shallow and deep convolutional neural network (CNN v1and CNN v2), an autoencoder (AE) and an autoencoder + convolutionalneural network (AE+CNN). We recognise a lack of surrounding literaturewhich consider the computational requirements as an importantaspect of model evaluation. Consequently, our evaluation of modelsfor each respective problem class is based on the classification andcomputational performance of each model. We further investigate theeffect of training the models on an input with a reduced feature space,where we discuss the impact this has in terms of a trade-off betweencomputational and classification performance. For botnet detection,we find that all models attain good (≥ 0.979 accuracy) classificationperformance on a normal testing set; however, this performance dropsfairly significantly when evaluated on a set of unknown botnet families.Furthermore, we observed a clear trend between increased featurespace and memory utilisation, while finding no evidence of a trendinference time and feature space. For botnet classification, we foundthat models which implement CNN architectures outperform othersby a significant margin (≈ 6 percentage points). We observe the sametrend between feature space and memory utilisation, and absence ofapparent relationship between feature space and inference time.</p>
+          
     </div>
 
-    <div class="container-mid-right">
-      <h1 class="abstract">Information</h1>
-      <div class="centered-hr"></div>
-      <div class="info-point">
-        <span class="first-word"> Currently </span> studying Computer Science
-        @ UCT [2019-]
-      </div>
-
-      <div class="info-point">
-        <span class="first-word"> Github </span>
-        <a href="https://github.com/lucascarrr">github.com/lucascarrr</a>
-      </div>
-
-      <div class="info-point">
-        <span class="first-word"> Twitter </span>
-        <a href="https://twitter.com/llluucaasss">twitter.com/lluucaasss</a>
-      </div>
-
-      <div class="info-point">
-        <span class="first-word"> Email </span> crrluc003 [@] myuct.ac.za
-      </div>
-
-      <div class="info-point">
-        <span class="first-word"> Keywords: </span> Non-Monotonic Logic,
-        Calvanism, Deafisble Reasoning
-      </div>
-
-      <div class="info-point">
-        <span class="first-word">
-          <a href="https://www.youtube.com/watch?v=eGDBR2L5kzI">Practice</a>
-        </span>
-      </div>
+    <!-- Content for Tab 2 -->
+    <div id="tab2-content" class="tab-content">
+        <p>This is the content for Tab 2.</p>
     </div>
-  </div>
 
-  <div class="container-bot">
-
-    <div class="container-bot-left">
-      <h1>Current Focus</h1>
-      <div class="centered-hr"></div>
-
-      <div class="info-point">
-        <span class="first-word"> Functional Programming </span>
-        <a href="https://haskell.mooc.fi/part1#lecture-1-and-so-it-begins">Haskell MOOC</a>
-      </div>
-
-      <div class="info-point">
-        <span class="first-word"> Real Analysis </span>
-        <a href="https://math.hmc.edu/su/math131/">Real Analysis by Francis Su</a>
-      </div>
+    <!-- Content for Tab 3 -->
+    <div id="tab3-content" class="tab-content">
+        <p>This is the content for Tab 3.</p>
     </div>
   </div>
 </body>
