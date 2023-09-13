@@ -27,9 +27,11 @@
 
   <div class="container-top">
     <div class="tab-container">
-      <div class="tab active" data-tab="tab1">Botnet Detection</div>
-      <div class="tab" data-tab="tab2">Ransomware</div>
-      <div class="tab" data-tab="tab3">Deliverables</div>
+      <div class="tab active" data-tab="tab1">Overview</div>
+      <div class="tab" data-tab="tab2">Botnet Detection</div>
+      <div class="tab" data-tab="tab3">Ransomware</div>
+      <div class="tab" data-tab="tab4">Deliverables</div>
+      <div class="tab" data-tab="tab5">Contact</div>
     </div>
 
     <div class="centered-hr"></div>
@@ -37,21 +39,25 @@
 
   <div class="container-mid">
     <div id="tab1-content" class="tab-content" style="display: block;">
-        <p class="Abstract"> Abstract </p>
-        <p>Detection of malicious traffic on a network is critical to ensuring thesafety and security of internet systems. Classical approaches to thistask increasingly struggle with modern networking procedures, likeencryption. Deep learning (DL) offers an alternative approach to trafficclassification problems.We address two major problem classes: (1) botnetdetection and (2) botnet family classification. For each problem, weexplore five implementations of DL architectures: a multi-layer perceptron(MLP), shallow and deep convolutional neural network (CNN v1and CNN v2), an autoencoder (AE) and an autoencoder + convolutionalneural network (AE+CNN). We recognise a lack of surrounding literaturewhich consider the computational requirements as an importantaspect of model evaluation. Consequently, our evaluation of modelsfor each respective problem class is based on the classification andcomputational performance of each model. We further investigate theeffect of training the models on an input with a reduced feature space,where we discuss the impact this has in terms of a trade-off betweencomputational and classification performance. For botnet detection,we find that all models attain good (≥ 0.979 accuracy) classificationperformance on a normal testing set; however, this performance dropsfairly significantly when evaluated on a set of unknown botnet families.Furthermore, we observed a clear trend between increased featurespace and memory utilisation, while finding no evidence of a trendinference time and feature space. For botnet classification, we foundthat models which implement CNN architectures outperform othersby a significant margin (≈ 6 percentage points). We observe the sametrend between feature space and memory utilisation, and absence ofapparent relationship between feature space and inference time.</p>
+      <p> Insert an overview of the problem </p>
           
     </div>
 
     <!-- Content for Tab 2 -->
     <div id="tab2-content" class="tab-content">
-        <p>This is the content for Tab 2.</p>
+
+        <p class="Abstract"> Abstract </p>
+
+        <p>Detection of malicious traffic on a network is critical to ensuring thesafety and security of internet systems. Classical approaches to thistask increasingly struggle with modern networking procedures, likeencryption. Deep learning (DL) offers an alternative approach to trafficclassification problems.We address two major problem classes: (1) botnetdetection and (2) botnet family classification. For each problem, weexplore five implementations of DL architectures: a multi-layer perceptron(MLP), shallow and deep convolutional neural network (CNN v1and CNN v2), an autoencoder (AE) and an autoencoder + convolutionalneural network (AE+CNN). We recognise a lack of surrounding literaturewhich consider the computational requirements as an importantaspect of model evaluation. Consequently, our evaluation of modelsfor each respective problem class is based on the classification andcomputational performance of each model. We further investigate theeffect of training the models on an input with a reduced feature space,where we discuss the impact this has in terms of a trade-off betweencomputational and classification performance. For botnet detection,we find that all models attain good (≥ 0.979 accuracy) classificationperformance on a normal testing set; however, this performance dropsfairly significantly when evaluated on a set of unknown botnet families.Furthermore, we observed a clear trend between increased featurespace and memory utilisation, while finding no evidence of a trendinference time and feature space. For botnet classification, we foundthat models which implement CNN architectures outperform othersby a significant margin (≈ 6 percentage points). We observe the sametrend between feature space and memory utilisation, and absence ofapparent relationship between feature space and inference time.</p>
     </div>
 
     <!-- Content for Tab 3 -->
     <div id="tab3-content" class="tab-content">
         <p>This is the content for Tab 3.</p>
     </div>
-  </div>
+    <!-- Content for Tab 4-->
+    <div id="tab4-content" class="tab-content"> </div>
+    <div id="tab5-content" class="tab-content"> Contact Details </div>
 </body>
 
 </html>

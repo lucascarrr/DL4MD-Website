@@ -13,14 +13,14 @@ body {
   flex-direction: column;
   align-items: center;
   padding-top: 5%;
-  min-height: 100vh;
+  min-height: 100%;
   background-color: #f7f7f5;
 }
 
 .Title {
   font-family: "XCharter", serif; /* Apply XCharter font to the title */
   text-align: center;
-  font-weight: light;
+  font-weight:light;
   margin-bottom: 8px;
   font-size: 48px;
   text-align: center;
@@ -61,6 +61,12 @@ body {
 
 .container-mid {
   width:790px;
+  margin-bottom: 1em;
+}
+
+.container-mid p {
+  margin-top: 0em;
+
 }
 
 .centered-hr {
