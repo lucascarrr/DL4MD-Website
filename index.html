@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 
@@ -17,12 +16,12 @@
   <h1 class="Title">Deep Learning for Intrusion Detection</h1>
 
   <div class="header">
-      <!-- <div class="project-description"> An evaluation of deep learning approaches to intrusion detection on encrypted network traffic -->
-      <!-- </div> -->
+    <!-- <div class="project-description"> An evaluation of deep learning approaches to intrusion detection on encrypted network traffic -->
+    <!-- </div> -->
 
-      <div class="intro"> DL4ID is a UCT Honours Project, created by Lucas Carr and Christopher Lamprecht </div>
-      <div class="intro"> Supervised by Dr Josiah Chavula </div>
-      
+    <div class="intro"> DL4ID is a UCT Honours Project, created by Lucas Carr and Christopher Lamprecht </div>
+    <div class="intro"> Supervised by Dr Josiah Chavula </div>
+
   </div>
 
   <div class="container-top">
@@ -40,20 +39,73 @@
   <div class="container-mid">
     <div id="tab1-content" class="tab-content" style="display: block;">
       <p> Insert an overview of the problem </p>
-          
+
     </div>
 
     <!-- Content for Tab 2 -->
     <div id="tab2-content" class="tab-content">
 
-        <p class="Abstract"> Abstract </p>
+      <p class="Abstract"> Abstract </p>
 
-        <p>Detection of malicious traffic on a network is critical to ensuring thesafety and security of internet systems. Classical approaches to thistask increasingly struggle with modern networking procedures, likeencryption. Deep learning (DL) offers an alternative approach to trafficclassification problems.We address two major problem classes: (1) botnetdetection and (2) botnet family classification. For each problem, weexplore five implementations of DL architectures: a multi-layer perceptron(MLP), shallow and deep convolutional neural network (CNN v1and CNN v2), an autoencoder (AE) and an autoencoder + convolutionalneural network (AE+CNN). We recognise a lack of surrounding literaturewhich consider the computational requirements as an importantaspect of model evaluation. Consequently, our evaluation of modelsfor each respective problem class is based on the classification andcomputational performance of each model. We further investigate theeffect of training the models on an input with a reduced feature space,where we discuss the impact this has in terms of a trade-off betweencomputational and classification performance. For botnet detection,we find that all models attain good (≥ 0.979 accuracy) classificationperformance on a normal testing set; however, this performance dropsfairly significantly when evaluated on a set of unknown botnet families.Furthermore, we observed a clear trend between increased featurespace and memory utilisation, while finding no evidence of a trendinference time and feature space. For botnet classification, we foundthat models which implement CNN architectures outperform othersby a significant margin (≈ 6 percentage points). We observe the sametrend between feature space and memory utilisation, and absence ofapparent relationship between feature space and inference time.</p>
+      <p>Detection of malicious traffic on a network is critical to ensuring the
+        safety and security of internet systems. Classical approaches to this
+        task increasingly struggle with modern networking procedures, like
+        encryption. Deep learning (DL) offers an alternative approach to traffic
+        classification problems.We address two major problem classes: (1) botnet
+        detection and (2) botnet family classification. For each problem, we
+        explore five implementations of DL architectures: a multi-layer perceptron
+        (MLP), shallow and deep convolutional neural network (CNN v1
+        and CNN v2), an autoencoder (AE) and an autoencoder + convolutional
+        neural network (AE+CNN). We recognise a lack of surrounding literature
+        which consider the computational requirements as an important
+        aspect of model evaluation. Consequently, our evaluation of models
+        for each respective problem class is based on the classification and
+        computational performance of each model. We further investigate the
+        effect of training the models on an input with a reduced feature space,
+        where we discuss the impact this has in terms of a trade-off between
+        computational and classification performance. For botnet detection,
+        we find that all models attain good (≥ 0.979 accuracy) classification
+        performance on a normal testing set; however, this performance drops
+        fairly significantly when evaluated on a set of unknown botnet families.
+        Furthermore, we observed a clear trend between increased feature
+        space and memory utilisation, while finding no evidence of a trend
+        inference time and feature space. For botnet classification, we found
+        that models which implement CNN architectures outperform others
+        by a significant margin (≈ 6 percentage points). We observe the same
+        trend between feature space and memory utilisation, and absence of
+        apparent relationship between feature space and inference time.</p>
     </div>
 
     <!-- Content for Tab 3 -->
     <div id="tab3-content" class="tab-content">
-        <p>This is the content for Tab 3.</p>
+      <p class="Abstract"> Abstract </p>
+      <p>A recent increase in ransomware attacks has necessitated tools that can detect threats within a computer
+        network.
+        Machine learning (ML) has been proposed as a solution to detect ransomware within network traffic. However,
+        whilst many ML models are developed to obtain high classification accuracy, we also test their runtime memory
+        performance and inference times. We further test the effect training the models on a reduced feature space has
+        on the classification and computational metrics. In this study, we evaluate multi-layer perceptrons (MLP),
+        1-dimensional and 2-dimensional convolutional neural networks (CNN) and long short-term memory (LSTM).
+        Experiments are performed to give insight into each model's ability to reduce its false positives (FPs). We find
+        a consistent increase in memory usage as the feature space increases and that the lowest amount of FPs is
+        obtained when using 50% to 66% of the features. The study evaluates 17 models for their effectiveness in
+        classifying ransomware network traffic. Efficiency in this context is considered a trade-off between accuracy,
+        false positives, runtime memory usage, and inference time.</p>
+      <p class="Abstract"> Research Objectives </p>
+      <ol>
+        <li>Assess the performance of MLP, 1D CNN, 2D CNN, and LSTM models in classifying encrypted network traffic as benign or ransomware, considering the accuracy, false positive/negative rate, inference time, and runtime memory usage of the models.</li>
+        <li>Investigate the impact of using a window of samples on the accuracy, false positive rate, inference time, and runtime memory consumption on an LSTM by grouping multiple samples into one sample.</li>
+        <li>Investigate the impact of dimensionality reduction on accuracy, false positive rate, inference time, and runtime memory consumption across the deep learning architectures (MLP, 1D CNN, 2D CNN, and LSTM) by decreasing the feature space from 30 samples down to 20, 15, and 5 samples.</li>
+      </ol>
+      <p class="Abstract"> Results </p>
+      <div class="image-container">
+        <img src="images/Accuracy.png" alt="Image 1" style="width: 300px; height: auto;">
+        <img src="images/FalsePositives.png" alt="Image 2" style="width: 300px; height: auto;">
+        <img src="images/MemoryUsage.png" alt="Image 1" style="width: 300px; height: auto;">
+        <img src="images/InferenceTime.png" alt="Image 2" style="width: 300px; height: auto;">
+      </div>
+      <p class="Abstract"> Conclusion </p>
+      <p>This is the content for Tab 3.</p>
     </div>
     <!-- Content for Tab 4-->
     <div id="tab4-content" class="tab-content"> </div>

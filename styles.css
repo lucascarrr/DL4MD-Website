@@ -107,3 +107,7 @@ body {
 .tab.active + .tab-content {
     display: block;
 }
+
+.image-container {
+  text-align: center;
+}
