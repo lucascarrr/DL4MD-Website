@@ -138,3 +138,47 @@ li {
 .tab.active + .tab-content {
   display: block;
 }
+
+.image-container {
+  text-align: center;
+}
+
+
+
+
+/*CSS for TABLES*/
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+
+
+/*CSS for DELIVERABLEs*/
+.pdf-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.pdf-container {
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+.view-pdf-button {
+  display: block;
+  margin-top: 10px;
+  background-color: #0074D9;
+  color: #fff;
+  padding: 5px 10px;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.view-pdf-button:hover {
+  background-color: #0056b3;
+}
