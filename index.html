@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -45,36 +46,74 @@
     <!-- Content for Tab 2 -->
     <div id="tab2-content" class="tab-content">
 
-      <p class="Abstract"> Abstract </p>
+      <h1 class="Abstract"> Problem </h1>
 
-      <p>Detection of malicious traffic on a network is critical to ensuring the
-        safety and security of internet systems. Classical approaches to this
-        task increasingly struggle with modern networking procedures, like
-        encryption. Deep learning (DL) offers an alternative approach to traffic
-        classification problems.We address two major problem classes: (1) botnet
-        detection and (2) botnet family classification. For each problem, we
-        explore five implementations of DL architectures: a multi-layer perceptron
-        (MLP), shallow and deep convolutional neural network (CNN v1
-        and CNN v2), an autoencoder (AE) and an autoencoder + convolutional
-        neural network (AE+CNN). We recognise a lack of surrounding literature
-        which consider the computational requirements as an important
-        aspect of model evaluation. Consequently, our evaluation of models
-        for each respective problem class is based on the classification and
-        computational performance of each model. We further investigate the
-        effect of training the models on an input with a reduced feature space,
-        where we discuss the impact this has in terms of a trade-off between
-        computational and classification performance. For botnet detection,
-        we find that all models attain good (≥ 0.979 accuracy) classification
-        performance on a normal testing set; however, this performance drops
-        fairly significantly when evaluated on a set of unknown botnet families.
-        Furthermore, we observed a clear trend between increased feature
-        space and memory utilisation, while finding no evidence of a trend
-        inference time and feature space. For botnet classification, we found
-        that models which implement CNN architectures outperform others
-        by a significant margin (≈ 6 percentage points). We observe the same
-        trend between feature space and memory utilisation, and absence of
-        apparent relationship between feature space and inference time.</p>
-    </div>
+      <p> A botnet defines a distributed network of computers, or bots,
+        infected with software that enables the bots to
+        be controlled by a malicious operator, or botmaster. These botnets attempt to hide themselves by transmitting
+        normal
+        traffic amongst their botnet traffic. However, a defining charac-
+        teristic of botnets is the presence of command and control channels,
+        through which the malicious operator is able to transmit instructions
+        or receive information. A common instruction would be a distributed
+        denial-of-service (DDOS) attack, where the bots flood a target to disrupt its service. It is this characteristic
+        of botnets - that the bot
+        must at some point connect to its botmaster - that may be leveraged
+        to build detection models. When a bot connects to the botmaster, a
+        sequence of network flows, defined as a grouping of related traffic, can
+        be extracted from the generated traffic, from which a deep learning
+        (DL) model will be able to learn distinguishing patterns.
+
+      </p>
+
+
+      <div class="centered-hr"></div>
+
+      <h1 class="Abstract"> Research Objectives </h1>
+      <p>
+        We implement five binary classification models, an MLP, shallow CNN
+        (v1), deep CNN (v2), AE, and AE+CNN, which serve as models for
+        botnet detection. With respect to each classifier, we aim to:
+      <ul>
+        <li>Evaluate the accuracy, FPR, and FNR on the standard and proto
+          zero-day test set. </li>
+        <li>Evaluate how reducing the feature space, into 50% and 30%
+          samples, impacts the memory requirements, inference time,
+          accuracy, FPR, and FNR of the models.</li>
+      </ul>
+      </p>
+
+      <div class="centered-hr"></div>
+
+      <h1 class="Abstract"> Dataset and Preprocessing </h1>
+      <p>
+        The <a href="https://www.stratosphereips.org/">Stratosphere Research Laboratory</a> provides a repository
+        featuring both malicious and benign traffic captures. We utilized the CTU-13 dataset, encompassing traffic from
+        seven unique botnet families alongside normal traffic, all captured in PCAP format. Flow extraction from these
+        PCAP files was achieved using the open-source tool, CICFlowMeter, resulting in bi-directional flows
+        characterized by 84 features. These features delineate statistical packet flow details for specific sessions.
+        However, certain features like IP addresses and port numbers were omitted due to their susceptibility to
+        manipulation techniques like dynamic IP addressing, port-obfuscation, and IP spoofing, which impede reliable
+        classification. Furthermore, to enhance model generalization on unseen data, intrinsic identity-related features
+        were excluded from the training set. <br><br>
+
+      <div class="image-container">
+        <img src="Images/Pipeline.png" alt="processing pipeline" width="400" height="300">
+      </div>
+      <br>
+
+      In constructing binary and multiclass datasets, network flows were systematically labelled. The binary set
+      comprised 60,000 malicious instances from select botnets (Neris, Rbot, Virut, Menti, Sogou) matched with 60,000
+      benign counterparts. An auxiliary zero-day dataset was curated from the Murlo and NSIS.ay botnet families to
+      evaluate model robustness against novel threats.
+
+      <br> <br>
+
+      For multiclass endeavors, a threshold of 30,000 samples per class was empirically set for classifier efficacy.
+      This criterion necessitated the omission of several botnet families, notably Sogou, Menti, NSIS.ay, and Murlo. The
+      refined dataset encompassed benign, Rbot, Virut, and Neris classifications, each balanced at 45,000 samples.
+      Subsequently, divisions were made at a 72%, 8%, and 20% ratio for training, validation, and testing respectively.
+      </p>
 
     <!-- Content for Tab 3 -->
     <div id="tab3-content" class="tab-content">
@@ -313,5 +352,6 @@
 
     <div id="tab5-content" class="tab-content"> Contact Details </div>
 </body>
+
 
 </html>
