@@ -1,0 +1,284 @@
+<h1 class="Abstract"> Problem </h1>
+
+      <p> A botnet defines a distributed network of computers, or bots,
+        infected with software that enables the bots to
+        be controlled by a malicious operator, or botmaster. These botnets attempt to hide themselves by transmitting
+        normal
+        traffic amongst their botnet traffic. However, a defining charac-
+        teristic of botnets is the presence of command and control channels,
+        through which the malicious operator is able to transmit instructions
+        or receive information. A common instruction would be a distributed
+        denial-of-service (DDOS) attack, where the bots flood a target to disrupt its service. It is this characteristic
+        of botnets - that the bot
+        must at some point connect to its botmaster - that may be leveraged
+        to build detection models. When a bot connects to the botmaster, a
+        sequence of network flows, defined as a grouping of related traffic, can
+        be extracted from the generated traffic, from which a deep learning
+        (DL) model will be able to learn distinguishing patterns.
+
+      </p>
+
+
+      <div class="centered-hr"></div>
+
+      <h1 class="Abstract"> Research Objectives </h1>
+      <p>
+        We implement five binary classification models, an MLP, shallow CNN
+        (v1), deep CNN (v2), AE, and AE+CNN, which serve as models for
+        botnet detection. With respect to each classifier, we aim to:
+      <ul>
+        <li>Evaluate the accuracy, FPR, and FNR on the standard and proto
+          zero-day test set. </li>
+        <li>Evaluate how reducing the feature space, into 50% and 30%
+          samples, impacts the memory requirements, inference time,
+          accuracy, FPR, and FNR of the models.</li>
+      </ul>
+      </p>
+
+      <div class="centered-hr"></div>
+
+      <h1 class="Abstract"> Dataset and Preprocessing </h1>
+      <p>
+        The <a href="https://www.stratosphereips.org/">Stratosphere Research Laboratory</a> provides a repository
+        featuring both malicious and benign traffic captures. We utilized the CTU-13 dataset, encompassing traffic from
+        seven unique botnet families alongside normal traffic, all captured in PCAP format. Flow extraction from these
+        PCAP files was achieved using the open-source tool, CICFlowMeter, resulting in bi-directional flows
+        characterized by 84 features. These features delineate statistical packet flow details for specific sessions.
+        However, certain features like IP addresses and port numbers were omitted due to their susceptibility to
+        manipulation techniques like dynamic IP addressing, port-obfuscation, and IP spoofing, which impede reliable
+        classification. Furthermore, to enhance model generalization on unseen data, intrinsic identity-related features
+        were excluded from the training set. <br><br>
+
+      <div class="image-container">
+        <img src="Images/Pipeline.png" alt="processing pipeline" width="400" height="300">
+      </div>
+      <br>
+
+      In constructing binary and multiclass datasets, network flows were systematically labelled. The binary set
+      comprised 60,000 malicious instances from select botnets (Neris, Rbot, Virut, Menti, Sogou) matched with 60,000
+      benign counterparts. An auxiliary zero-day dataset was curated from the Murlo and NSIS.ay botnet families to
+      evaluate model robustness against novel threats.
+
+      <br> <br>
+
+      For multiclass endeavors, a threshold of 30,000 samples per class was empirically set for classifier efficacy.
+      This criterion necessitated the omission of several botnet families, notably Sogou, Menti, NSIS.ay, and Murlo. The
+      refined dataset encompassed benign, Rbot, Virut, and Neris classifications, each balanced at 45,000 samples.
+      Subsequently, divisions were made at a 72%, 8%, and 20% ratio for training, validation, and testing respectively.
+      </p>
+
+
+
+      @font-face {
+        font-family: "XCharter";
+        font-style: normal;
+        src: url("fonts/XCharter-Roman.otf") format("opentype"),
+          url("fonts/XCharter-Bold.otf") format("opentype");
+        font-display: swap;
+        font-weight: 200, 400;
+        /* Corresponding font weights for the Regular and Bold styles */
+      }
+      
+      body {
+        font-family: "XCharter", serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 5%;
+        max-height: 12in;
+        background-color: #efeada;
+        color: #2e5257;
+        overflow-y: scroll;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* Internet Explorer 10+ */
+      }
+      
+      .Title {
+        font-family: "XCharter", serif;
+        /* Apply XCharter font to the title */
+        text-align: center;
+        font-weight: light;
+        margin-bottom: 8px;
+        font-size: 48px;
+        text-align: center;
+        font-weight: lighter;
+        margin-bottom: 1em;
+      }
+      
+      .header {
+        max-width: 790px;
+        width: 100%;
+      }
+      
+      .project-description {
+        text-align: left;
+        text-transform: uppercase;
+        margin-bottom: 0.5em;
+        font-size: 14pt;
+      }
+      
+      .intro {
+        margin-bottom: 1em;
+        font-style: italic;
+        color: #95948a;
+      }
+      
+      .container-top {
+        max-width: 790px;
+        width: 100%;
+        margin-bottom: 1em;
+      }
+      
+      .container-top p {
+        font-size: 14px;
+        line-height: 1em;
+        font-weight: lighter;
+        margin-bottom: 0.2em;
+      }
+      
+      .container-mid {
+        width: 790px;
+        margin-bottom: 1em;
+      }
+      
+      .container-mid p {
+        margin-top: 0em;
+      }
+      
+      .centered-hr {
+        width: 100%;
+        height: 1px;
+        margin-bottom: 0.3em;
+        background-color: #2e5257;
+      }
+      
+      .tab-container {
+        display: flex;
+      }
+      
+      .tab {
+        cursor: pointer;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 5px;
+        text-align: left !important;
+      }
+      
+      .tab-content {
+        display: none;
+        text-align: justify; /* Justify the text on both sides */
+        text-justify: inter-word;
+      }
+      
+      .tab-content p {
+        line-height: 1.5em;
+      }
+      
+      .tab-content .centered-hr {
+        width: 50%;
+        margin-top: 2.5em;
+        margin-bottom: 2em;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: #2e52576b;
+      }
+      
+      .Abstract {
+        font-weight: 400;
+        font-size: 18pt;
+      }
+      
+      ul {
+        list-style-type: disc;
+      }
+      
+      li {
+        margin-left: 20px; /* adjust the left margin */
+        margin-bottom: 10px;
+      }
+      
+      .tab.active {
+        background-color: #2e5257;
+        color: #fff;
+      }
+      
+      .image-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      .tab.active + .tab-content {
+        display: block;
+      }
+      
+      .image-container {
+        text-align: center;
+      }
+      
+      
+      
+      
+      /*CSS for TABLES*/
+      .tg {
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+      
+      .tg td {
+        border-color: black;
+        border-style: solid;
+        border-width: 1px;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        overflow: hidden;
+        padding: 10px 5px;
+        word-break: normal;
+      }
+      
+      .tg th {
+        border-color: black;
+        border-style: solid;
+        border-width: 1px;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        font-weight: normal;
+        overflow: hidden;
+        padding: 10px 5px;
+        word-break: normal;
+      }
+      
+      .tg .tg-0pky {
+        border-color: inherit;
+        text-align: left;
+        vertical-align: top
+      }
+      
+      
+      /*CSS for DELIVERABLEs*/
+      .pdf-row {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+      
+      .pdf-container {
+        margin: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        text-align: center;
+      }
+      
+      .view-pdf-button {
+        display: block;
+        margin-top: 10px;
+        background-color: rgb(230, 228, 213);
+        color: #fff;
+        padding: 5px 10px;
+        text-decoration: none;
+        border-radius: 4px;
+      }
+      
+      .view-pdf-button:hover {
+        background-color: rgb(31, 83, 88); /* Custom RGB color on hover */
+      }

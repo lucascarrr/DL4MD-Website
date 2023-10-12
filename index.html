@@ -53,40 +53,87 @@
         in network traffic make packet payload inspection challenging. Given these limitations, the objective is to
         assess the effectiveness of different deep learning algorithms in detecting and classifying malware traffic.
       </p>
+      <p class="Abstract"> Project Foocus </p>
+      <p class="Abstract2"> Lucas </p>
+      Lucas's focus will be directed at ransomware detection within encrypted network traffic.
+      <p class="Abstract2"> Chris </p>
+      <p>Chris's focus will be directed at ransomware detection within encrypted network traffic.</p>
+
     </div>
 
     <!-- Content for Tab 2 -->
     <div id="tab2-content" class="tab-content">
 
-      <p class="Abstract">Abstract</p>
+      <p class="Abstract"> Abstract </p>
 
-      <p>Detection of malicious traffic on a network is critical to ensuring the
-        safety and security of internet systems. Classical approaches to this
-        task increasingly struggle with modern networking procedures, like
-        encryption. Deep learning (DL) offers an alternative approach to traffic
-        classification problems.We address two major problem classes: (1) botnet
-        detection and (2) botnet family classification. For each problem, we
-        explore five implementations of DL architectures: a multi-layer perceptron
-        (MLP), shallow and deep convolutional neural network (CNN v1
-        and CNN v2), an autoencoder (AE) and an autoencoder + convolutional
-        neural network (AE+CNN). We recognise a lack of surrounding literature
-        which consider the computational requirements as an important
-        aspect of model evaluation. Consequently, our evaluation of models
-        for each respective problem class is based on the classification and
-        computational performance of each model. We further investigate the
-        effect of training the models on an input with a reduced feature space,
-        where we discuss the impact this has in terms of a trade-off between
-        computational and classification performance. For botnet detection,
-        we find that all models attain good (≥ 0.979 accuracy) classification
-        performance on a normal testing set; however, this performance drops
-        fairly significantly when evaluated on a set of unknown botnet families.
-        Furthermore, we observed a clear trend between increased feature
-        space and memory utilisation, while finding no evidence of a trend
-        inference time and feature space. For botnet classification, we found
-        that models which implement CNN architectures outperform others
-        by a significant margin (≈ 6 percentage points). We observe the same
-        trend between feature space and memory utilisation, and absence of
-        apparent relationship between feature space and inference time.</p>
+      <h1 class="Abstract"> Problem </h1>
+
+      <p> A botnet defines a distributed network of computers, or bots,
+        infected with software that enables the bots to
+        be controlled by a malicious operator, or botmaster. These botnets attempt to hide themselves by transmitting
+        normal
+        traffic amongst their botnet traffic. However, a defining charac-
+        teristic of botnets is the presence of command and control channels,
+        through which the malicious operator is able to transmit instructions
+        or receive information. A common instruction would be a distributed
+        denial-of-service (DDOS) attack, where the bots flood a target to disrupt its service. It is this characteristic
+        of botnets - that the bot
+        must at some point connect to its botmaster - that may be leveraged
+        to build detection models. When a bot connects to the botmaster, a
+        sequence of network flows, defined as a grouping of related traffic, can
+        be extracted from the generated traffic, from which a deep learning
+        (DL) model will be able to learn distinguishing patterns.
+
+      </p>
+
+
+      <div class="centered-hr"></div>
+
+      <h1 class="Abstract"> Research Objectives </h1>
+      <p>
+        We implement five binary classification models, an MLP, shallow CNN
+        (v1), deep CNN (v2), AE, and AE+CNN, which serve as models for
+        botnet detection. With respect to each classifier, we aim to:
+      <ul>
+        <li>Evaluate the accuracy, FPR, and FNR on the standard and proto
+          zero-day test set. </li>
+        <li>Evaluate how reducing the feature space, into 50% and 30%
+          samples, impacts the memory requirements, inference time,
+          accuracy, FPR, and FNR of the models.</li>
+      </ul>
+      </p>
+
+      <div class="centered-hr"></div>
+
+      <h1 class="Abstract"> Dataset and Preprocessing </h1>
+      <p>
+        The <a href="https://www.stratosphereips.org/">Stratosphere Research Laboratory</a> provides a repository
+        featuring both malicious and benign traffic captures. We utilized the CTU-13 dataset, encompassing traffic from
+        seven unique botnet families alongside normal traffic, all captured in PCAP format. Flow extraction from these
+        PCAP files was achieved using the open-source tool, CICFlowMeter, resulting in bi-directional flows
+        characterized by 84 features. These features delineate statistical packet flow details for specific sessions.
+        However, certain features like IP addresses and port numbers were omitted due to their susceptibility to
+        manipulation techniques like dynamic IP addressing, port-obfuscation, and IP spoofing, which impede reliable
+        classification. Furthermore, to enhance model generalization on unseen data, intrinsic identity-related features
+        were excluded from the training set. <br><br>
+
+      <div class="image-container">
+        <img src="Images/Pipeline.png" alt="processing pipeline" width="400" height="300">
+      </div>
+      <br>
+
+      In constructing binary and multiclass datasets, network flows were systematically labelled. The binary set
+      comprised 60,000 malicious instances from select botnets (Neris, Rbot, Virut, Menti, Sogou) matched with 60,000
+      benign counterparts. An auxiliary zero-day dataset was curated from the Murlo and NSIS.ay botnet families to
+      evaluate model robustness against novel threats.
+
+      <br> <br>
+
+      For multiclass endeavors, a threshold of 30,000 samples per class was empirically set for classifier efficacy.
+      This criterion necessitated the omission of several botnet families, notably Sogou, Menti, NSIS.ay, and Murlo. The
+      refined dataset encompassed benign, Rbot, Virut, and Neris classifications, each balanced at 45,000 samples.
+      Subsequently, divisions were made at a 72%, 8%, and 20% ratio for training, validation, and testing respectively.
+      </p>
     </div>
 
     <!-- Content for Tab 3 -->
@@ -104,6 +151,7 @@
         obtained when using 50% to 66% of the features. The study evaluates 17 models for their effectiveness in
         classifying ransomware network traffic. Efficiency in this context is considered a trade-off between accuracy,
         false positives, runtime memory usage, and inference time.</p>
+        <div class="centered-hr"></div>
       <p class="Abstract"> Research Objectives </p>
       <ol>
         <li>Assess the performance of MLP, 1D CNN, 2D CNN, and LSTM models in classifying encrypted network traffic as
@@ -115,6 +163,7 @@
           runtime memory consumption across the deep learning architectures (MLP, 1D CNN, 2D CNN, and LSTM) by
           decreasing the feature space from 30 samples down to 20, 15, and 5 samples.</li>
       </ol>
+      <div class="centered-hr"></div>
       <p class="Abstract"> Dataset </p>
       For this project, the <a href="http://dataset.tlm.unavarra.es/ransomware/">Open Access Dataset</a> (OA) was used.
 
@@ -132,6 +181,7 @@
       exclusively contains benign traffic for false positive testing. The test set contains previously unseen network
       traffic but also includes ransomware from the same families present in the train set.
       <br>
+      <div class="centered-hr"></div>
       <p class="Abstract">Experiments</p>
       <p>The table below presents the experiments performed to address the research objectives of the project.</p>
       <table class="tg">
@@ -166,6 +216,7 @@
         </tbody>
       </table>
       <br>
+      <div class="centered-hr"></div>
       <p class="Abstract"> Results </p>
       <table class="tg">
         <thead>
@@ -235,7 +286,7 @@
         runtime memory. WLSTM is less memory-efficient due to windowed processing, but this trade-off can lead to faster
         inference times. All models have acceptable inference times below 25.74 milliseconds.
       </p>
-      <div class="image-container">
+      <div class="image-containerChris">
 
         <img src="images/Accuracy.png" alt="Image 1" style="width: 300px; height: auto;">
         <img src="images/FalsePositives.png" alt="Image 2" style="width: 300px; height: auto;">
@@ -267,6 +318,7 @@
       across different input sizes, suggesting the sequential nature of network packet data. The optimal range for
       minimizing FPs is using 50% to 66% of the feature set. Larger inputs lead to increased runtime memory usage.
       <br>
+      <div class="centered-hr"></div>
       <p class="Abstract"> Conclusion </p>
       <p>In conclusion, this study evaluated the performance of various ML models for classifying encrypted network
         traffic as ransomware.
