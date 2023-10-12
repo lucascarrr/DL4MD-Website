@@ -4,7 +4,8 @@
   src: url("fonts/XCharter-Roman.otf") format("opentype"),
     url("fonts/XCharter-Bold.otf") format("opentype");
   font-display: swap;
-  font-weight: 200, 400; /* Corresponding font weights for the Regular and Bold styles */
+  font-weight: 200, 400;
+  /* Corresponding font weights for the Regular and Bold styles */
 }
 
 body {
@@ -18,9 +19,10 @@ body {
 }
 
 .Title {
-  font-family: "XCharter", serif; /* Apply XCharter font to the title */
+  font-family: "XCharter", serif;
+  /* Apply XCharter font to the title */
   text-align: center;
-  font-weight:light;
+  font-weight: light;
   margin-bottom: 8px;
   font-size: 48px;
   text-align: center;
@@ -30,20 +32,20 @@ body {
 
 .header {
   max-width: 790px;
-  width:100%;
+  width: 100%;
 }
 
 .project-description {
   text-align: left;
   text-transform: uppercase;
-  margin-bottom:0.5em;
-  font-size:14pt;
+  margin-bottom: 0.5em;
+  font-size: 14pt;
 }
 
 .intro {
-  margin-bottom:1em;
-  font-style:italic;
-  color: #95948a;  
+  margin-bottom: 1em;
+  font-style: italic;
+  color: #95948a;
 }
 
 .container-top {
@@ -60,7 +62,7 @@ body {
 }
 
 .container-mid {
-  width:790px;
+  width: 790px;
   margin-bottom: 1em;
 }
 
@@ -77,35 +79,40 @@ body {
 }
 
 .tab-container {
-    display: flex;
+  display: flex;
 }
 
 .tab {
-    cursor: pointer;
-    padding-left:10px;
-    padding-right:10px;
-    padding-top:5px;
-    text-align: left !important;
+  cursor: pointer;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  text-align: left !important;
 }
 
 .tab-content {
-    display: none;
-    text-align: justify; /* Justify the text on both sides */
-    text-justify: inter-word; 
+  display: none;
+  text-align: justify;
+  /* Justify the text on both sides */
+  text-justify: inter-word;
 }
 
 .Abstract {
-    font-weight: bold;
-    font-size: 18pt;
+  font-weight: bold;
+  font-size: 18pt;
+}
+.Abstract2 {
+  font-weight: bold;
+  font-size: 14pt;
 }
 
 .tab.active {
-    background-color: #000000;
-    color: #FFF;
+  background-color: #000000;
+  color: #FFF;
 }
 
-.tab.active + .tab-content {
-    display: block;
+.tab.active+.tab-content {
+  display: block;
 }
 
 .image-container {
@@ -116,12 +123,39 @@ body {
 
 
 /*CSS for TABLES*/
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+.tg {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.tg td {
+  border-color: black;
+  border-style: solid;
+  border-width: 1px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  overflow: hidden;
+  padding: 10px 5px;
+  word-break: normal;
+}
+
+.tg th {
+  border-color: black;
+  border-style: solid;
+  border-width: 1px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  overflow: hidden;
+  padding: 10px 5px;
+  word-break: normal;
+}
+
+.tg .tg-0pky {
+  border-color: inherit;
+  text-align: left;
+  vertical-align: top
+}
 
 
 /*CSS for DELIVERABLEs*/
@@ -141,7 +175,7 @@ body {
 .view-pdf-button {
   display: block;
   margin-top: 10px;
-  background-color: #0074D9;
+  background-color: rgb(230, 228, 213);
   color: #fff;
   padding: 5px 10px;
   text-decoration: none;
@@ -149,5 +183,5 @@ body {
 }
 
 .view-pdf-button:hover {
-  background-color: #0056b3;
+  background-color: rgb(31, 83, 88); /* Custom RGB color on hover */
 }
