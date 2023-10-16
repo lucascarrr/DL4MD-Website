@@ -4,7 +4,8 @@
   src: url("fonts/XCharter-Roman.otf") format("opentype"),
     url("fonts/XCharter-Bold.otf") format("opentype");
   font-display: swap;
-  font-weight: 200, 400; /* Corresponding font weights for the Regular and Bold styles */
+  font-weight: 200, 400;
+  /* Corresponding font weights for the Regular and Bold styles */
 }
 
 body {
@@ -22,7 +23,8 @@ body {
 }
 
 .Title {
-  font-family: "XCharter", serif; /* Apply XCharter font to the title */
+  font-family: "XCharter", serif;
+  /* Apply XCharter font to the title */
   text-align: center;
   font-weight: light;
   margin-bottom: 8px;
@@ -143,16 +145,47 @@ li {
   text-align: center;
 }
 
+.image-containerChris {
+  text-align: center;
+}
+
 
 
 
 /*CSS for TABLES*/
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+.tg {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.tg td {
+  border-color: black;
+  border-style: solid;
+  border-width: 1px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  overflow: hidden;
+  padding: 10px 5px;
+  word-break: normal;
+}
+
+.tg th {
+  border-color: black;
+  border-style: solid;
+  border-width: 1px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  overflow: hidden;
+  padding: 10px 5px;
+  word-break: normal;
+}
+
+.tg .tg-0pky {
+  border-color: inherit;
+  text-align: left;
+  vertical-align: top
+}
 
 
 /*CSS for DELIVERABLEs*/
@@ -172,7 +205,7 @@ li {
 .view-pdf-button {
   display: block;
   margin-top: 10px;
-  background-color: #0074D9;
+  background-color: rgb(230, 228, 213);
   color: #fff;
   padding: 5px 10px;
   text-decoration: none;
@@ -180,5 +213,5 @@ li {
 }
 
 .view-pdf-button:hover {
-  background-color: #0056b3;
+  background-color: rgb(31, 83, 88); /* Custom RGB color on hover */
 }

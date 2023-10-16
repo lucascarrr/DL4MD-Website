@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 
@@ -14,24 +13,24 @@
 </head>
 
 <body>
-  <h1 class="Title">Deep Learning for Intrusion Detection</h1>
+  <h1 class="Title">Deep Learning for Malware Detection</h1>
 
   <div class="header">
     <!-- <div class="project-description"> An evaluation of deep learning approaches to intrusion detection on encrypted network traffic -->
     <!-- </div> -->
 
-    <div class="intro"> DL4ID is a UCT Honours Project, created by Lucas Carr and Christopher Lamprecht </div>
+    <div class="intro"> DL4MD is a UCT Honours Project, created by Lucas Carr and Christopher Lamprecht </div>
     <div class="intro"> Supervised by Dr Josiah Chavula </div>
 
   </div>
 
   <div class="container-top">
     <div class="tab-container">
-      <div class="tab active" data-tab="tab1">Overview</div>
+      <div class="tab active" data-tab="tab1">Home</div>
       <div class="tab" data-tab="tab2">Botnet Detection</div>
       <div class="tab" data-tab="tab3">Ransomware</div>
       <div class="tab" data-tab="tab4">Deliverables</div>
-      <div class="tab" data-tab="tab5">Contact</div>
+      <div class="tab" data-tab="tab5">Details</div>
     </div>
 
     <div class="centered-hr"></div>
@@ -39,12 +38,33 @@
 
   <div class="container-mid">
     <div id="tab1-content" class="tab-content" style="display: block;">
-      <p> Insert an overview of the problem </p>
+      <p class="Abstract"> Overview </p>
+      <p>The widespread use of computers and networks has brought many advantages but has also introduced
+        new security challenges, primarily in the form of malicious software, or malware. Malware encompasses various
+        types of software designed to infiltrate systems without permission, often for financial gain. Detecting
+        malicious network traffic is crucial for internet system safety, but traditional methods face difficulties with
+        modern network procedures, like encryption. Deep learning offers an alternative approach for classifying network
+        traffic.
+        <br>
+        <br>
+        Existing approaches to prevent malware are not new, and they typically use Network Intrusion Detection Systems
+        (NIDS). However, these methods have become less effective due to evolving networking practices. Port numbers
+        and blacklisted IP addresses are no longer reliable indicators of malicious activity, and encryption protocols
+        in network traffic make packet payload inspection challenging. Given these limitations, the objective is to
+        assess the effectiveness of different deep learning algorithms in detecting and classifying malware traffic.
+      </p>
+      <p class="Abstract"> Project Foocus </p>
+      <p class="Abstract2"> Lucas </p>
+      Lucas's focus will be directed at ransomware detection within encrypted network traffic.
+      <p class="Abstract2"> Chris </p>
+      <p>Chris's focus will be directed at ransomware detection within encrypted network traffic.</p>
 
     </div>
 
     <!-- Content for Tab 2 -->
     <div id="tab2-content" class="tab-content">
+
+      <p class="Abstract"> Abstract </p>
 
       <h1 class="Abstract"> Problem </h1>
 
@@ -114,6 +134,7 @@
       refined dataset encompassed benign, Rbot, Virut, and Neris classifications, each balanced at 45,000 samples.
       Subsequently, divisions were made at a 72%, 8%, and 20% ratio for training, validation, and testing respectively.
       </p>
+    </div>
 
     <!-- Content for Tab 3 -->
     <div id="tab3-content" class="tab-content">
@@ -130,6 +151,7 @@
         obtained when using 50% to 66% of the features. The study evaluates 17 models for their effectiveness in
         classifying ransomware network traffic. Efficiency in this context is considered a trade-off between accuracy,
         false positives, runtime memory usage, and inference time.</p>
+        <div class="centered-hr"></div>
       <p class="Abstract"> Research Objectives </p>
       <ol>
         <li>Assess the performance of MLP, 1D CNN, 2D CNN, and LSTM models in classifying encrypted network traffic as
@@ -141,6 +163,7 @@
           runtime memory consumption across the deep learning architectures (MLP, 1D CNN, 2D CNN, and LSTM) by
           decreasing the feature space from 30 samples down to 20, 15, and 5 samples.</li>
       </ol>
+      <div class="centered-hr"></div>
       <p class="Abstract"> Dataset </p>
       For this project, the <a href="http://dataset.tlm.unavarra.es/ransomware/">Open Access Dataset</a> (OA) was used.
 
@@ -158,6 +181,7 @@
       exclusively contains benign traffic for false positive testing. The test set contains previously unseen network
       traffic but also includes ransomware from the same families present in the train set.
       <br>
+      <div class="centered-hr"></div>
       <p class="Abstract">Experiments</p>
       <p>The table below presents the experiments performed to address the research objectives of the project.</p>
       <table class="tg">
@@ -192,6 +216,7 @@
         </tbody>
       </table>
       <br>
+      <div class="centered-hr"></div>
       <p class="Abstract"> Results </p>
       <table class="tg">
         <thead>
@@ -261,7 +286,7 @@
         runtime memory. WLSTM is less memory-efficient due to windowed processing, but this trade-off can lead to faster
         inference times. All models have acceptable inference times below 25.74 milliseconds.
       </p>
-      <div class="image-container">
+      <div class="image-containerChris">
 
         <img src="images/Accuracy.png" alt="Image 1" style="width: 300px; height: auto;">
         <img src="images/FalsePositives.png" alt="Image 2" style="width: 300px; height: auto;">
@@ -293,6 +318,7 @@
       across different input sizes, suggesting the sequential nature of network packet data. The optimal range for
       minimizing FPs is using 50% to 66% of the feature set. Larger inputs lead to increased runtime memory usage.
       <br>
+      <div class="centered-hr"></div>
       <p class="Abstract"> Conclusion </p>
       <p>In conclusion, this study evaluated the performance of various ML models for classifying encrypted network
         traffic as ransomware.
@@ -321,37 +347,64 @@
       <!-- First Row with Two PDFs -->
       <div class="pdf-row">
         <div class="pdf-container">
-          <h3>PDF 1</h3>
+          <h3>Botnet Final Paper</h3>
           <embed src="documents/LMPCHR002-DeepLearningForRansomwareDetection_ChrisLamprecht_FINAL.pdf"
             type="application/pdf">
           <a href="documents/LMPCHR002-DeepLearningForRansomwareDetection_ChrisLamprecht_FINAL.pdf" target="_blank"
             class="view-pdf-button">View PDF</a>
         </div>
         <div class="pdf-container">
-          <h3>PDF 2</h3>
-          <embed src="documents/LMPCHR002-DeepLearningForRansomwareDetection_ChrisLamprecht_FINAL.pdf" type="application/pdf">
-          <a href="documents/LMPCHR002-DeepLearningForRansomwareDetection_ChrisLamprecht_FINAL.pdf" target="_blank" class="view-pdf-button">View PDF</a>
+          <h3>Ransomware Final Paper</h3>
+          <embed src="documents/LMPCHR002-DeepLearningForRansomwareDetection_ChrisLamprecht_FINAL.pdf"
+            type="application/pdf">
+          <a href="documents/LMPCHR002-DeepLearningForRansomwareDetection_ChrisLamprecht_FINAL.pdf" target="_blank"
+            class="view-pdf-button">View PDF</a>
         </div>
       </div>
 
       <!-- Second Row with Two PDFs -->
       <div class="pdf-row">
         <div class="pdf-container">
-          <h3>PDF 3</h3>
-          <embed src="documents/LMPCHR002-DeepLearningForRansomwareDetection_ChrisLamprecht_FINAL.pdf" type="application/pdf">
-          <a href="documents/LMPCHR002-DeepLearningForRansomwareDetection_ChrisLamprecht_FINAL.pdf" target="_blank" class="view-pdf-button">View PDF</a>
+          <h3>Lucas's Literature Review</h3>
+          <embed src="documents/LMPCHR002-DeepLearningForRansomwareDetection_ChrisLamprecht_FINAL.pdf"
+            type="application/pdf">
+          <a href="documents/LMPCHR002-DeepLearningForRansomwareDetection_ChrisLamprecht_FINAL.pdf" target="_blank"
+            class="view-pdf-button">View PDF</a>
         </div>
         <div class="pdf-container">
-          <h3>PDF 4</h3>
-          <embed src="documents/LMPCHR002-DeepLearningForRansomwareDetection_ChrisLamprecht_FINAL.pdf" type="application/pdf">
-          <a href="documents/LMPCHR002-DeepLearningForRansomwareDetection_ChrisLamprecht_FINAL.pdf" target="_blank" class="view-pdf-button">View PDF</a>
+          <h3>Chris's Literature Review</h3>
+          <embed src="documents/LMPCHR002-DeepLearningForRansomwareDetection_ChrisLamprecht_FINAL.pdf"
+            type="application/pdf">
+          <a href="documents/LMPCHR002-DeepLearningForRansomwareDetection_ChrisLamprecht_FINAL.pdf" target="_blank"
+            class="view-pdf-button">View PDF</a>
+        </div>
+      </div>
+
+      <!-- Second Row with Two PDFs -->
+      <div class="pdf-row">
+        <div class="pdf-container">
+          <h3>Project Proposal</h3>
+          <embed src="documents/LMPCHR002-DeepLearningForRansomwareDetection_ChrisLamprecht_FINAL.pdf"
+            type="application/pdf">
+          <a href="documents/LMPCHR002-DeepLearningForRansomwareDetection_ChrisLamprecht_FINAL.pdf" target="_blank"
+            class="view-pdf-button">View PDF</a>
+        </div>
+        <div class="pdf-container">
+          <h3>Poster<h3>
+              <embed src="documents/LMPCHR002-DeepLearningForRansomwareDetection_ChrisLamprecht_FINAL.pdf"
+                type="application/pdf">
+              <a href="documents/LMPCHR002-DeepLearningForRansomwareDetection_ChrisLamprecht_FINAL.pdf" target="_blank"
+                class="view-pdf-button">View PDF</a>
         </div>
       </div>
     </div>
 
 
-    <div id="tab5-content" class="tab-content"> Contact Details </div>
+    <div id="tab5-content" class="tab-content">
+      <p>Lucas Carr: crrluc003@myuct.ac.za</p>
+      <p>Christopher Lamprecht: lmpchr002@myuct.ac.za</p>
+      <p>Dr. Josiah Chavula (Supervisor): josiah.chavula@uct.ac.za</p>
+    </div>
 </body>
-
 
 </html>
