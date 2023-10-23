@@ -20,7 +20,7 @@ body {
   overflow-y: scroll;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* Internet Explorer 10+ */
-  padding-bottom: 500px; /* Adjust as needed */
+  padding-bottom: 00px; /* Adjust as needed */
 }
 
 .Title {
