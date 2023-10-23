@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
   showTab("tab1");
 
   // Programmatically click on the first tab to set it as active initially
-  const firstTab = document.querySelector('[data-tab="tab2"]');
+  const firstTab = document.querySelector('[data-tab="tab1"]');
   if (firstTab) {
     firstTab.click();
   }

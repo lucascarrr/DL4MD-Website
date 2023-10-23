@@ -14,12 +14,13 @@ body {
   flex-direction: column;
   align-items: center;
   padding-top: 5%;
-  max-height: 12in;
+  max-height: 100%;
   background-color: #efeada;
   color: #2e5257;
   overflow-y: scroll;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* Internet Explorer 10+ */
+  padding-bottom: 500px; /* Adjust as needed */
 }
 
 .Title {
@@ -54,8 +55,15 @@ body {
 
 .container-top {
   max-width: 790px;
+  position: sticky;
+  top: 0;
+  background-color: #efeadb;
+  z-index: 5;
   width: 100%;
   margin-bottom: 1em;
+}
+.content-below-container-top {
+  padding-top: 50px; /* Adjust as needed */
 }
 
 .container-top p {
@@ -117,6 +125,16 @@ body {
   font-size: 18pt;
 }
 
+h2 {
+  font-weight: 400;
+  font-size: 16pt;
+}
+
+h3 {
+  font-weight: 500;
+  font-size: 14pt;
+}
+
 ul {
   list-style-type: disc;
 }
@@ -135,6 +153,8 @@ li {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: auto;
+  padding-top: 10px;
 }
 
 .tab.active + .tab-content {
@@ -149,13 +169,55 @@ li {
   text-align: center;
 }
 
+.Lucas-Table {
+  width: 80%;
+  border-collapse: collapse;
+  margin: auto;
+  border-color: #2e5257;
+  border-style: solid;
+  border-width: 1px;
+  font-family: Georgia, "Times New Roman", Times, serif, sans-serif;
+  font-size: 14px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
 
+.Lucas-Table caption {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
 
+.Lucas-Table thead th {
+  text-align: center;
+  font-weight: 400;
+  padding: 10px;
+  border-color: #2e5257;
+  border-style: solid;
+  border-width: 1px;
+  font-family: Georgia, "Times New Roman", Times, serif, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  overflow: hidden;
+  padding: 10px 5px;
+  word-break: normal;
+}
 
+.Lucas-Table tbody td {
+  text-align: center;
+  padding: 10px;
+}
+
+.Lucas-Table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* End */
 /*CSS for TABLES*/
 .tg {
   border-collapse: collapse;
   border-spacing: 0;
+  margin: auto; /* Centers the table horizontally */
+  width: 80%; /* Adjust as needed */
 }
 
 .tg td {
@@ -184,9 +246,8 @@ li {
 .tg .tg-0pky {
   border-color: inherit;
   text-align: left;
-  vertical-align: top
+  vertical-align: top;
 }
-
 
 /*CSS for DELIVERABLEs*/
 .pdf-row {
@@ -206,12 +267,13 @@ li {
   display: block;
   margin-top: 10px;
   background-color: rgb(230, 228, 213);
-  color: #fff;
+  color: #2e5257;
   padding: 5px 10px;
   text-decoration: none;
   border-radius: 4px;
 }
 
 .view-pdf-button:hover {
-  background-color: rgb(31, 83, 88); /* Custom RGB color on hover */
+  background-color: rgb(31, 83, 88);
+  color: #ccc;
 }

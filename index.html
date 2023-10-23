@@ -30,13 +30,14 @@
       <div class="tab" data-tab="tab2">Botnet Detection</div>
       <div class="tab" data-tab="tab3">Ransomware</div>
       <div class="tab" data-tab="tab4">Deliverables</div>
-      <div class="tab" data-tab="tab5">Details</div>
     </div>
 
     <div class="centered-hr"></div>
   </div>
 
   <div class="container-mid">
+
+    <!-- Content for Tab 1 -->
     <div id="tab1-content" class="tab-content" style="display: block;">
       <p class="Abstract"> Overview </p>
       <p>The widespread use of computers and networks has brought many advantages but has also introduced
@@ -45,29 +46,34 @@
         malicious network traffic is crucial for internet system safety, but traditional methods face difficulties with
         modern network procedures, like encryption. Deep learning offers an alternative approach for classifying network
         traffic.
-        <br>
-        <br>
+      </p>
+      <p>
+        While there are numerous sub-categories of malware, we focus
+        attention on Botnets and Ransomware. We selected Botnets out of recognition that the increasing number
+        of security-vulnerable Internet of Things (IoT) devices offer an ideal
+        landscape for botnets. A botnet defines a distributed network of
+        computers, or bots, infected with software that enables the bots to
+        be controlled by a malicious operator, or botmaster.
+        Ransomware is a form of malware
+        that encrypts a user’s files/devices, denying them access to these files/devices until a sum of money
+        (the ransom) is paid. In 2022, there were 493 million ransomware
+        attempts, a 162.29% increase since 2019.</p>
+      <p>
         Existing approaches to prevent malware are not new, and they typically use Network Intrusion Detection Systems
         (NIDS). However, these methods have become less effective due to evolving networking practices. Port numbers
         and blacklisted IP addresses are no longer reliable indicators of malicious activity, and encryption protocols
         in network traffic make packet payload inspection challenging. Given these limitations, the objective is to
         assess the effectiveness of different deep learning algorithms in detecting and classifying malware traffic.
       </p>
-      <p class="Abstract"> Project Foocus </p>
-      <p class="Abstract2"> Lucas </p>
-      Lucas's focus will be directed at ransomware detection within encrypted network traffic.
-      <p class="Abstract2"> Chris </p>
-      <p>Chris's focus will be directed at ransomware detection within encrypted network traffic.</p>
+      <img src="Images/Logo.png" alt="processing pipeline" width="300" height="300"
+        style="display: block; margin: auto;">
 
     </div>
 
     <!-- Content for Tab 2 -->
     <div id="tab2-content" class="tab-content">
-
-      <p class="Abstract"> Abstract </p>
-
-      <h1 class="Abstract"> Problem </h1>
-
+      <p class="Abstract"> Problem
+        <p />
       <p> A botnet defines a distributed network of computers, or bots,
         infected with software that enables the bots to
         be controlled by a malicious operator, or botmaster. These botnets attempt to hide themselves by transmitting
@@ -90,6 +96,7 @@
       <div class="centered-hr"></div>
 
       <h1 class="Abstract"> Research Objectives </h1>
+      <h2> Botnet Detection </h2>
       <p>
         We implement five binary classification models, an MLP, shallow CNN
         (v1), deep CNN (v2), AE, and AE+CNN, which serve as models for
@@ -100,6 +107,20 @@
         <li>Evaluate how reducing the feature space, into 50% and 30%
           samples, impacts the memory requirements, inference time,
           accuracy, FPR, and FNR of the models.</li>
+      </ul>
+      </p>
+
+      <h2> Botnet Classification </h2>
+      <p>
+        We implement five multiclass classification models, an MLP, shallow CNN
+        (v1), deep CNN (v2), AE, and AE+CNN, which classify traffic into botnet families. With respect to each
+        classifier, we aim to:
+      <ul>
+        <li>Determine the overall accuracy, and accuracy respective to each
+          class, when evaluated on the standard test set.</li>
+        <li>Evaluate how reducing the feature space, into 50% and 30%
+          samples, effects the memory requirements and inference time,
+          in relation to the overall accuracy of a model.</li>
       </ul>
       </p>
 
@@ -126,14 +147,246 @@
       comprised 60,000 malicious instances from select botnets (Neris, Rbot, Virut, Menti, Sogou) matched with 60,000
       benign counterparts. An auxiliary zero-day dataset was curated from the Murlo and NSIS.ay botnet families to
       evaluate model robustness against novel threats.
-
-      <br> <br>
+      <br><br>
 
       For multiclass endeavors, a threshold of 30,000 samples per class was empirically set for classifier efficacy.
       This criterion necessitated the omission of several botnet families, notably Sogou, Menti, NSIS.ay, and Murlo. The
       refined dataset encompassed benign, Rbot, Virut, and Neris classifications, each balanced at 45,000 samples.
       Subsequently, divisions were made at a 72%, 8%, and 20% ratio for training, validation, and testing respectively.
+
+      <br>
       </p>
+      <div class="centered-hr"></div>
+      <h1 class="Abstract"> Experiments </h1>
+      <h2> Binary Classification Experiments </h2>
+      <h3> 1. Comparing the Classification Performance of Models
+        Evaluated on Normal and Proto Zero-Day Test Set </h3>
+      <p>This experiment establishes a baseline evaluation of how MLP, CNN
+        v1, CNN v2, AE, and AE+CNN perform, in terms of classification ac-
+        curacy, FPR, and FNR on the conventional testing set. Subsequently,
+        these models are evaluated on the additional proto zero-day testing set, to ascertain their ability to
+        generalise to unseen botnet
+        families.</p>
+
+      <h3> 2. Evaluating the Effect of a Reduced Input Feature Space
+        on Computational and Classification Performance </h3>
+      <p>Computational performance is defined by memory usage (MMU) and inference time (MIT). Accurate metrics are hard
+        to obtain due to concurrent processes and OS memory management. We observed memory consumption increasing with
+        each model iteration, risking bias towards early-evaluated models. To mitigate this, we measured MIT and MMU
+        across batches of 100 test samples, rebooting the system after each batch. Memory was profiled using Python's
+        'Memory Profiler' package, and inference time was measured using the 'timeit' package. Metrics were averaged
+        over three runs for each model, using feature sets of 100%, 50%, and 30%.</p>
+      <h2> Multiclass Classification Experiments </h2>
+      <h3> 1. Evaluate the Classification Accuracy of each model over-
+        all, and for each Botnet Family</h3>
+      <p>The experiment tests MLP, CNN v1, CNN v2, AE, and AE+CNN models for overall and per-class accuracy in botnet
+        family identification. FPRs and FNRs aren't suitable for multiclass problems. We use the standard test set only,
+        dismissing proto zero-day sets as incompatible with multiclass classification. Each class is balanced with 8000
+        samples, justifying the use of accuracy as a metric. Models are evaluated using Keras' 'predict()' method, and
+        results are stored in a confusion matrix.</p>
+      <h3>2. Evaluating the Effect of a Reduced Input Feature Space
+        on Computational and Classification Performance</h3>
+      <p>We evaluate the effect of reducing feature spaces on both computational and classification performance by
+        training five different models on three datasets. These datasets contain 74, 37, and 22 features, which
+        correspond to 100%, 50%, and 30% of the total features, respectively. For computational performance, we focus on
+        measuring the model's mean inference time (MIT) and mean memory usage (MMU). Classification performance is
+        primarily gauged by a model's overall accuracy across all classes. We also pay attention to the rate of
+        misclassified traffic to identify whether specific models have difficulty classifying certain botnet families,
+        or if some families are consistently poorly classified across all models.</p>
+
+      <div class="centered-hr"></div>
+      <h1 class="Abstract"> Results </h1>
+      <h2> Binary Classification Results </h2>
+      <p>
+        In the evaluation of machine learning models for botnet detection, the Convolutional Neural Network version 2
+        (CNN v2) outperforms both the Multi-layer Perceptron (MLP) and the Autoencoder (AE). Specifically, CNN v2 shows
+        the highest accuracy on a standard testing set, followed by the MLP and then the AE. While these high accuracies
+        suggest that botnet detection is not exceedingly complex, the performance variations between the models are
+        noteworthy.
+      </p>
+      <p>
+        The lower performance of the AE models could be attributed to the encoding phase's inability to capture critical
+        features of the input data. This limitation is particularly significant when considering high-traffic network
+        environments, where even marginal error rate improvements could result in thousands of fewer false positives and
+        negatives.
+      </p>
+      <div class="image-container">
+        <img src="images/Lucas_Binary.png" alt="Image 1" style="width: 80%; height: auto;">
+      </div>
+      <p>
+        When evaluating the models' False Positive Rate (FPR) and False Negative Rate (FNR), similar trends emerge,
+        with CNN v2 demonstrating better performance overall. Interestingly, CNN v2 shows a decline in its FPR compared
+        to an earlier version, which could indicate a risk of overfitting due to its increased complexity.
+      </p>
+      <p>
+        Performance declines across all models when tested on a proto zero-day dataset, which includes botnet families
+        excluded from training. This suggests that while the models are capable of high accuracy when dealing with known
+        entities, their generalization to unknown families is poor. The variability in performance on the proto zero-day
+        dataset further suggests that models like CNN v2, which incorporate convolutional layers, are better suited for
+        capturing complex, generalized botnet behaviors. In contrast, AE and MLP models, which excel at learning
+        specific features of known botnet families, struggle to generalize this knowledge to new, unknown families.
+      </p>
+
+      <h2> Multiclass Classification Results </h2>
+
+      <table class="Lucas-Table" border="1">
+        <caption>Classification and Computational Performance of Multiclass Classifiers</caption>
+
+        <p>
+          The classification and computational performance of each of the five multiclass classifiers is shown in the
+          table below. The overall accuracies of the models
+          when classifying traffic into respective families of Benign, Neris, Rbot,
+          and Virut were expectedly lower than the binary classification task model accuracies, with a mean accuracy
+          score
+          across all classes of
+          0.850, compared to 0.986. The best performance was observed in the
+          CNN v1, which achieved an average accuracy across all families of
+          0.907. We observed that there was again a marked improvement, in
+          terms of overall classification accuracy, seen in the models which used
+          convolutional layers, with the exception of the AE+CNN model. CNNs
+          are known for their efficacy when learning hierarchical relationships
+          between features, which is a useful way of reasoning about the necessary and sufficient conditions when making
+          a classification.
+        </p>
+
+        <thead>
+          <tr>
+            <th rowspan="1">Model</th>
+            <th colspan="3">Accuracy</th>
+            <th colspan="3">Memory (MB)</th>
+            <th colspan="3">Inference Time (S)</th>
+          </tr>
+          <tr>
+            <th>% features</th>
+            <th>100</th>
+            <th>50</th>
+            <th>30</th>
+            <th>100</th>
+            <th>50</th>
+            <th>30</th>
+            <th>100</th>
+            <th>50</th>
+            <th>30</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>CNN v1</td>
+            <td>0.907</td>
+            <td>0.881</td>
+            <td>0.819</td>
+            <td>465.96</td>
+            <td>434.63</td>
+            <td>425.77</td>
+            <td>0.00030</td>
+            <td>0.00031</td>
+            <td>0.00027</td>
+          </tr>
+          <tr>
+            <td>CNN v2</td>
+            <td>0.898</td>
+            <td>0.889</td>
+            <td>0.809</td>
+            <td>465.85</td>
+            <td>446.88</td>
+            <td>431.28</td>
+            <td>0.00029</td>
+            <td>0.00026</td>
+            <td>0.00025</td>
+          </tr>
+          <tr>
+            <td>AE</td>
+            <td>0.836</td>
+            <td>0.786</td>
+            <td>0.745</td>
+            <td>447.98</td>
+            <td>427.21</td>
+            <td>419.70</td>
+            <td>0.00024</td>
+            <td>0.00022</td>
+            <td>0.00022</td>
+          </tr>
+          <tr>
+            <td>AE CNN</td>
+            <td>0.836</td>
+            <td>0.807</td>
+            <td>0.755</td>
+            <td>492.95</td>
+            <td>478.88</td>
+            <td>458.87</td>
+            <td>0.00028</td>
+            <td>0.00030</td>
+            <td>0.00030</td>
+          </tr>
+          <tr>
+            <td>MLP</td>
+            <td>0.773</td>
+            <td>0.764</td>
+            <td>0.684</td>
+            <td>445.69</td>
+            <td>425.44</td>
+            <td>418.13</td>
+            <td>0.00023</td>
+            <td>0.00023</td>
+            <td>0.00022</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        We have just proposed that a CNNs’ ability to
+        capture hierarchical relationships in data may be an explanation for
+        their effectiveness for this problem; consequently, we suggest that
+        an explanation for the relatively poor performance of the AE+CNN,
+        which should benefit from this property of the convolutional layers,
+        is that the encoding phase of the network reduces the complexity of
+        the data to a point where the subsequent CNN is unable to learn the
+        necessary hierarchical relationships, because they no longer ‘exist’ in the encoded representation.
+      </p>
+      <p>
+        The three models that employ a CNN appeared
+        to use more memory than the AE and MLP. We expect the MLP to
+        use the least memory, as it is the least complex model. However, the
+        CNN v1 has fewer trainable parameters than the AE, while using more
+        memory. We suggest that the cause of this, and a general explanation
+        for why CNNs seem to have the largest MMU, is that the CNN has to
+        store filters and their respective activation maps in memory, which
+        can become fairly expensive.
+      </p>
+      <p>
+        We find that in every model, there is an increase to MMU as the
+        feature space increases. This was an expected result: that larger input feature spaces are associated
+        with an increase to a model’s MMU. However, we maintain that this
+        increase to MMU represents a relatively small improvement to computational performance, and is often coupled
+        with a fairly substantial
+        improvement in classification performance.
+      </p>
+      <h1 class="Abstract"> Conclusion </h1>
+      <p>
+        For our first research objective, we found that all models
+        achieved accuracies ≥0.979, FPRs ≤0.033, and FNRs ≤0.026, suggesting that the classification problem was fairly
+        simple. Classification
+        performance declined on the proto zero-day set overall, and clearly
+        showed that CNNs were more capable algorithms at detecting zero-day
+        traffic.</p>
+      <p>
+        We further observed a clear trend that larger feature spaces
+        where associated with a larger MMU, affirming our expectation that
+        feature selection might improve computational performance. However,
+        in reducing feature space we also observe a substantial decline in classification performance. We found no
+        evidence of a trend between feature
+        space size and MIT; however, we acknowledge that there were serious
+        limitations to the accuracy of measuring MIT.
+      </p>
+
+      <p>With respect to the
+        second research objective, we found a fairly large differential between
+        the classification performance of models which used convolutional
+        layers and those that did not. We suggest that the efficacy of CNNs at
+        learning hierarchical relations between features is an explanation for
+        this. As with the binary classifiers, we observed a trend where larger
+        feature spaces were associated with slightly greater MMU. However,
+        the larger feature spaces resulted in substantially better classification
+        performance.</p>
     </div>
 
     <!-- Content for Tab 3 -->
@@ -151,7 +404,7 @@
         obtained when using 50% to 66% of the features. The study evaluates 17 models for their effectiveness in
         classifying ransomware network traffic. Efficiency in this context is considered a trade-off between accuracy,
         false positives, runtime memory usage, and inference time.</p>
-        <div class="centered-hr"></div>
+      <div class="centered-hr"></div>
       <p class="Abstract"> Research Objectives </p>
       <ol>
         <li>Assess the performance of MLP, 1D CNN, 2D CNN, and LSTM models in classifying encrypted network traffic as
@@ -180,7 +433,6 @@
       test set. These subsets include both benign and ransomware network traffic, except for the extra test set, which
       exclusively contains benign traffic for false positive testing. The test set contains previously unseen network
       traffic but also includes ransomware from the same families present in the train set.
-      <br>
       <div class="centered-hr"></div>
       <p class="Abstract">Experiments</p>
       <p>The table below presents the experiments performed to address the research objectives of the project.</p>
@@ -215,9 +467,14 @@
           </tr>
         </tbody>
       </table>
-      <br>
       <div class="centered-hr"></div>
       <p class="Abstract"> Results </p>
+      <p>The LSTM model outperforms others in accuracy, thanks to its ability to handle sequential network traffic,
+        learn long-term dependencies, and deal with noisy data. However, the windowed LSTM (WLSTM) didn't perform as
+        well due to reduced temporal resolution. The 2D CNN had the worst accuracy but the fewest false positives (FPs),
+        indicating it may capture spatial patterns in benign traffic, while MLP had a higher accuracy but more FPs,
+        likely due to dataset imbalance. LSTM handles class imbalance better.
+      </p>
       <table class="tg">
         <thead>
           <tr>
@@ -273,18 +530,13 @@
         </tbody>
       </table>
       <br>
-      <br>
-      <p>The LSTM model outperforms others in accuracy, thanks to its ability to handle sequential network traffic,
-        learn long-term dependencies, and deal with noisy data. However, the windowed LSTM (WLSTM) didn't perform as
-        well due to reduced temporal resolution. The 2D CNN had the worst accuracy but the fewest false positives (FPs),
-        indicating it may capture spatial patterns in benign traffic, while MLP had a higher accuracy but more FPs,
-        likely due to dataset imbalance. LSTM handles class imbalance better.
-        <br>
+      <p>
         <br>
         Regarding inference time and runtime memory usage, MLP is the fastest (0.0023 ms) and LSTM is the slowest
         (0.0089 ms). This aligns with MLP's lightweight architecture. CNNs perform similarly, with LSTM using the least
         runtime memory. WLSTM is less memory-efficient due to windowed processing, but this trade-off can lead to faster
         inference times. All models have acceptable inference times below 25.74 milliseconds.
+        <br>
       </p>
       <div class="image-containerChris">
 
@@ -293,31 +545,37 @@
         <img src="images/MemoryUsage.png" alt="Image 1" style="width: 300px; height: auto;">
         <img src="images/InferenceTime.png" alt="Image 2" style="width: 300px; height: auto;">
       </div>
-      In the analysis of model performance with varying numbers of input features (5, 15, 20, 30), it's observed that
-      using all features results in high accuracies, but there's no consistent trend across all models when using fewer
-      features. Surprisingly, the LSTM consistently maintains high accuracy with different feature counts, contrary to
-      previous expectations.
-      <br>
-      <br>
-      Concerning false positives (FPs), there's a "sweet spot" for all models, with the lowest FPs occurring when using
-      15-20 features. This suggests that too few features may hinder learning, while using all features could introduce
-      redundancy and confusion.
-      <br>
-      <br>
-      MLP stands out by performing well with just five features, indicating its effectiveness with fewer inputs.
-      However, models that yield low FPs but struggle to classify ransomware, like the 2D CNN, are less useful. In
-      contrast, the LSTM maintains high accuracy even with 20 features.
-      <br>
-      <br>
-      When considering runtime memory usage, as more features are used, it consistently increases across all models,
-      aligning with prior research. Inference time changes slightly with different feature counts, with the LSTM being
-      the slowest and the MLP the fastest. However, the number of features does not strongly influence inference time.
-      <br>
-      <br>
-      In summary, varying input feature sizes impact accuracy, FPs, and runtime memory usage. The LSTM performs well
-      across different input sizes, suggesting the sequential nature of network packet data. The optimal range for
-      minimizing FPs is using 50% to 66% of the feature set. Larger inputs lead to increased runtime memory usage.
-      <br>
+      <p>
+        <br>
+        In the analysis of model performance with varying numbers of input features (5, 15, 20, 30), it's observed that
+        using all features results in high accuracies, but there's no consistent trend across all models when using
+        fewer
+        features. Surprisingly, the LSTM consistently maintains high accuracy with different feature counts, contrary to
+        previous expectations.
+        <br>
+        <br>
+        Concerning false positives (FPs), there's a "sweet spot" for all models, with the lowest FPs occurring when
+        using
+        15-20 features. This suggests that too few features may hinder learning, while using all features could
+        introduce
+        redundancy and confusion.
+        <br>
+        <br>
+        MLP stands out by performing well with just five features, indicating its effectiveness with fewer inputs.
+        However, models that yield low FPs but struggle to classify ransomware, like the 2D CNN, are less useful. In
+        contrast, the LSTM maintains high accuracy even with 20 features.
+        <br>
+        <br>
+        When considering runtime memory usage, as more features are used, it consistently increases across all models,
+        aligning with prior research. Inference time changes slightly with different feature counts, with the LSTM being
+        the slowest and the MLP the fastest. However, the number of features does not strongly influence inference time.
+        <br>
+        <br>
+        In summary, varying input feature sizes impact accuracy, FPs, and runtime memory usage. The LSTM performs well
+        across different input sizes, suggesting the sequential nature of network packet data. The optimal range for
+        minimizing FPs is using 50% to 66% of the feature set. Larger inputs lead to increased runtime memory usage.
+        <br>
+      </p>
       <div class="centered-hr"></div>
       <p class="Abstract"> Conclusion </p>
       <p>In conclusion, this study evaluated the performance of various ML models for classifying encrypted network
@@ -342,16 +600,15 @@
         include measuring these metrics in a more isolated environment, where these metrics can easily be controlled.
       </p>
     </div>
+
     <!-- Content for Tab 4-->
     <div id="tab4-content" class="tab-content">
       <!-- First Row with Two PDFs -->
       <div class="pdf-row">
         <div class="pdf-container">
           <h3>Botnet Final Paper</h3>
-          <embed src="documents/LMPCHR002-DeepLearningForRansomwareDetection_ChrisLamprecht_FINAL.pdf"
-            type="application/pdf">
-          <a href="documents/LMPCHR002-DeepLearningForRansomwareDetection_ChrisLamprecht_FINAL.pdf" target="_blank"
-            class="view-pdf-button">View PDF</a>
+          <embed src="documents/Lucas Final.pdf" type="application/pdf">
+          <a href="documents/Lucas Final.pdf" target="_blank" class="view-pdf-button">View PDF</a>
         </div>
         <div class="pdf-container">
           <h3>Ransomware Final Paper</h3>
@@ -366,17 +623,13 @@
       <div class="pdf-row">
         <div class="pdf-container">
           <h3>Lucas's Literature Review</h3>
-          <embed src="documents/LMPCHR002-DeepLearningForRansomwareDetection_ChrisLamprecht_FINAL.pdf"
-            type="application/pdf">
-          <a href="documents/LMPCHR002-DeepLearningForRansomwareDetection_ChrisLamprecht_FINAL.pdf" target="_blank"
-            class="view-pdf-button">View PDF</a>
+          <embed src="documents/Lucas Lit Review.pdf" type="application/pdf">
+          <a href="documents/Lucas Lit Review.pdf" target="_blank" class="view-pdf-button">View PDF</a>
         </div>
         <div class="pdf-container">
           <h3>Chris's Literature Review</h3>
-          <embed src="documents/LMPCHR002-DeepLearningForRansomwareDetection_ChrisLamprecht_FINAL.pdf"
-            type="application/pdf">
-          <a href="documents/LMPCHR002-DeepLearningForRansomwareDetection_ChrisLamprecht_FINAL.pdf" target="_blank"
-            class="view-pdf-button">View PDF</a>
+          <embed src="documents/Chris Literature Review.pdf" type="application/pdf">
+          <a href="documents/Chris Literature Review.pdf" target="_blank" class="view-pdf-button">View PDF</a>
         </div>
       </div>
 
@@ -384,27 +637,23 @@
       <div class="pdf-row">
         <div class="pdf-container">
           <h3>Project Proposal</h3>
-          <embed src="documents/LMPCHR002-DeepLearningForRansomwareDetection_ChrisLamprecht_FINAL.pdf"
-            type="application/pdf">
-          <a href="documents/LMPCHR002-DeepLearningForRansomwareDetection_ChrisLamprecht_FINAL.pdf" target="_blank"
-            class="view-pdf-button">View PDF</a>
+          <embed src="documents/Proposal.pdf" type="application/pdf">
+          <a href="documents/Proposal.pdf" target="_blank" class="view-pdf-button">View PDF</a>
         </div>
         <div class="pdf-container">
           <h3>Poster<h3>
-              <embed src="documents/LMPCHR002-DeepLearningForRansomwareDetection_ChrisLamprecht_FINAL.pdf"
-                type="application/pdf">
-              <a href="documents/LMPCHR002-DeepLearningForRansomwareDetection_ChrisLamprecht_FINAL.pdf" target="_blank"
-                class="view-pdf-button">View PDF</a>
+              <embed src="documents/Poster.pdf" type="application/pdf">
+              <a href="documents/Poster.pdf" target="_blank" class="view-pdf-button">View PDF</a>
         </div>
       </div>
     </div>
-
-
-    <div id="tab5-content" class="tab-content">
-      <p>Lucas Carr: crrluc003@myuct.ac.za</p>
-      <p>Christopher Lamprecht: lmpchr002@myuct.ac.za</p>
-      <p>Dr. Josiah Chavula (Supervisor): josiah.chavula@uct.ac.za</p>
-    </div>
 </body>
+<footer>
+  <div class="centered-hr"></div>
+  <br><br>
+  <h2>Contact Details</h2>
+  <p>Lucas Carr: crrluc003@myuct.ac.za</p>
+  <p>Christopher Lamprecht: lmpchr002@myuct.ac.za</p>
+</footer>
 
 </html>
